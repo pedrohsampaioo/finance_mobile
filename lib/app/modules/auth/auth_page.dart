@@ -15,48 +15,51 @@ class AuthPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.background,
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 48),
-                CustomTextFieldWidget(
-                  label: 'Email Address',
-                  prefixSvgPath: AppSvgPath.letter,
-                  placeHolder: 'example@contato.com',
-                ),
-                const SizedBox(height: 32),
-                CustomTextFieldWidget(
-                  label: 'Password',
-                  prefixSvgPath: AppSvgPath.padlock,
-                  obscureText: true,
-                ),
-                const SizedBox(height: 48),
-                PrimaryButtonWidget(
-                  onPressed: () {},
-                  title: 'Login',
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextWithActionWidget(
-                      title: 'Signup',
-                      action: () {},
-                    ),
-                    TextWithActionWidget(
-                      title: 'Forgot Password?',
-                      action: () {},
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 48),
-              ],
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 48),
+                  CustomTextFieldWidget(
+                    label: 'Email Address',
+                    prefixSvgPath: AppSvgPath.letter,
+                    placeHolder: 'example@contato.com',
+                  ),
+                  const SizedBox(height: 32),
+                  CustomTextFieldWidget(
+                    label: 'Password',
+                    prefixSvgPath: AppSvgPath.padlock,
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 48),
+                  PrimaryButtonWidget(
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, '/home'),
+                    title: 'Login',
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextWithActionWidget(
+                        title: 'Signup',
+                        action: () {},
+                      ),
+                      TextWithActionWidget(
+                        title: 'Forgot Password?',
+                        action: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 48),
+                ],
+              ),
             ),
           ),
         ),
