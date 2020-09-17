@@ -6,7 +6,7 @@ part 'app_typography.dart';
 
 class AppTheme {
   static ThemeData get config => ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
+        textTheme: GoogleFonts.ubuntuTextTheme(),
         primaryColor: AppColors.darkBlue,
         accentColor: AppColors.darkBlue,
       );
