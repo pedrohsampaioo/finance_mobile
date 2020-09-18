@@ -42,7 +42,7 @@ class _RecentTransactionsPageState extends State<RecentTransactionsPage> {
                 onChanged: _handleSelectedLabel,
                 labels: Mocks.recentTransactionsLabels,
               ),
-              TodaySection(),
+              _buildTodaySection(),
               const SizedBox(height: 32),
               _buildConnections(),
               const SizedBox(height: 32),
@@ -58,6 +58,19 @@ class _RecentTransactionsPageState extends State<RecentTransactionsPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTodaySection() {
+    return AnimatedSwitcher(
+      duration: const Duration(seconds: 1),
+      transitionBuilder: (widget, animation) {
+        return ScaleTransition(
+          child: widget,
+          scale: animation,
+        );
+      },
+      child: _selectedLabel == 0 ? TodaySection() : const SizedBox.shrink(),
     );
   }
 

@@ -1,23 +1,25 @@
+import '../../core/assets/app_svg_path.dart';
+
 class FixtureReader {
   static Map<String, dynamic> get transactions => <String, dynamic>{
         "data": [
           {
-            "svg_path": "assets/svg/arrow_down.svg",
+            "svg_path": AppSvgPath.arrowDown,
             "subtitle": "Sending Payment to Clients",
             "title": "Sent",
             "value": 150
           },
           {
-            "svg_path": "assets/svg/arrow_down.svg",
-            "subtitle": "Sending Payment to Clients",
-            "title": "Sent",
-            "value": 150
+            "svg_path": AppSvgPath.arrowUp,
+            "subtitle": "Receive Salary from company",
+            "title": "Receive",
+            "value": 250
           },
           {
-            "svg_path": "assets/svg/arrow_down.svg",
-            "subtitle": "Sending Payment to Clients",
-            "title": "Sent",
-            "value": 150
+            "svg_path": AppSvgPath.moneyBottomApp,
+            "subtitle": "Lean for the car",
+            "title": "Lean",
+            "value": 400
           }
         ]
       };

@@ -95,7 +95,7 @@ class PaymentConnectionsWidget extends StatelessWidget {
           ),
           child: CircleAvatar(
             radius: width / 2 * 0.2,
-            backgroundImage: NetworkImage(profileImageUrl),
+            backgroundImage: NetworkImage(connectionsImageUrl[index]),
             backgroundColor: AppColors.lightGrey,
           ),
         ),
