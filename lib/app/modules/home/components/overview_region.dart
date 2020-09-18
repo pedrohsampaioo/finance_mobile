@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/assets/app_svg_path.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/utils/handle_date.dart';
-import '../widgets/transaction_widget.dart';
+import '../../../shared/widgets/composites/transaction_card/i_transaction_card_composite.dart';
 
 class OverviewRegion extends StatelessWidget {
   @override
@@ -15,26 +15,19 @@ class OverviewRegion extends StatelessWidget {
       children: [
         _buildHeader(),
         const SizedBox(height: 16),
-        TransactionWidget(
+        GeneralTransactionCard(
           iconPath: AppSvgPath.arrowDown,
           subtitle: 'Sending Payment to Clients',
           title: 'Sent',
           value: 150,
-        ),
+        ).render(),
         const SizedBox(height: 16),
-        TransactionWidget(
+        GeneralTransactionCard(
           iconPath: AppSvgPath.arrowDown,
           subtitle: 'Sending Payment to Clients',
           title: 'Sent',
           value: 150,
-        ),
-        const SizedBox(height: 16),
-        TransactionWidget(
-          iconPath: AppSvgPath.arrowDown,
-          subtitle: 'Sending Payment to Clients',
-          title: 'Sent',
-          value: 150,
-        ),
+        ).render()
       ],
     );
   }

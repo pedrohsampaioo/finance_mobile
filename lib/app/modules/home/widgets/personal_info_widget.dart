@@ -40,7 +40,7 @@ class PersonalInfoWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildIconsHeader(),
+          _buildIconsHeader(context),
           const SizedBox(height: 8),
           CircleAvatar(
             radius: 48,
@@ -61,23 +61,36 @@ class PersonalInfoWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildIconsHeader() {
+  Widget _buildIconsHeader(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: [
-        SvgPicture.asset(
-          AppSvgPath.options,
-          color: AppColors.darkBlue,
-          height: 4,
-          width: 4,
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => Navigator.pushNamed(context, '/recent_transactions'),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(
+              AppSvgPath.options,
+              color: AppColors.darkBlue,
+              height: 4,
+              width: 4,
+            ),
+          ),
         ),
-        SvgPicture.asset(
-          AppSvgPath.dotted,
-          color: AppColors.darkBlue,
-          height: 8,
-          width: 8,
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(
+              AppSvgPath.dotted,
+              color: AppColors.darkBlue,
+              height: 8,
+              width: 8,
+            ),
+          ),
         ),
       ],
     );
