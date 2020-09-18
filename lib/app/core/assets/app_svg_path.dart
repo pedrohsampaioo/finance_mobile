@@ -14,4 +14,5 @@ class AppSvgPath {
   static String get moneyBottomApp => 'assets/svg/money_bottom_app.svg';
   static String get back => 'assets/svg/back.svg';
   static String get search => 'assets/svg/search.svg';
+  static String get logo => 'assets/svg/logo.svg';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../core/assets/app_svg_path.dart';
 import '../../core/theme/app_theme.dart';
@@ -24,10 +25,13 @@ class AuthPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 48),
+                  SvgPicture.asset(AppSvgPath.logo),
+                  const SizedBox(height: 48),
                   CustomTextFieldWidget(
                     label: 'Email Address',
                     prefixSvgPath: AppSvgPath.letter,
                     placeHolder: 'example@contato.com',
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   const SizedBox(height: 32),
                   CustomTextFieldWidget(
@@ -37,26 +41,14 @@ class AuthPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 48),
                   PrimaryButtonWidget(
-                    onPressed: () =>
-                        Navigator.pushReplacementNamed(context, '/home'),
+                    onPressed: () => Navigator.pushReplacementNamed(
+                      context,
+                      '/home',
+                    ),
                     title: 'Login',
                   ),
                   const SizedBox(height: 24),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextWithActionWidget(
-                        title: 'Signup',
-                        action: () {},
-                      ),
-                      TextWithActionWidget(
-                        title: 'Forgot Password?',
-                        action: () {},
-                      ),
-                    ],
-                  ),
+                  _buildBottomTextButtons(),
                   const SizedBox(height: 48),
                 ],
               ),
@@ -64,6 +56,24 @@ class AuthPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildBottomTextButtons() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TextWithActionWidget(
+          title: 'Signup',
+          action: () {},
+        ),
+        TextWithActionWidget(
+          title: 'Forgot Password?',
+          action: () {},
+        ),
+      ],
     );
   }
 }
