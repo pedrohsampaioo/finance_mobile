@@ -10,11 +10,13 @@ class CustomTextFieldWidget extends StatefulWidget {
   final String prefixSvgPath;
   final String placeHolder;
   final bool obscureText;
+  final TextInputType keyboardType;
 
   const CustomTextFieldWidget({
     Key key,
     @required this.label,
     @required this.prefixSvgPath,
+    this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.placeHolder,
   })  : assert(label != null),
@@ -88,6 +90,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
 
   Widget _buildTextField() {
     return CupertinoTextField(
+      keyboardType: widget.keyboardType,
       focusNode: _focusNode,
       placeholder: widget.placeHolder,
       placeholderStyle: AppTypography.bodySmallRegular.copyWith(
@@ -103,11 +106,29 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       suffix: GestureDetector(
         onTap: _handleObscureText,
         behavior: HitTestBehavior.opaque,
-        child: SvgPicture.asset(
-          _multableObscure ? AppSvgPath.openEye : AppSvgPath.closedEye,
-          color: AppColors.black,
-          height: 16,
-          width: 16,
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          transitionBuilder: (widget, animation) {
+            return ScaleTransition(
+              child: widget,
+              scale: animation,
+            );
+          },
+          child: _multableObscure
+              ? SvgPicture.asset(
+                  AppSvgPath.openEye,
+                  color: AppColors.black,
+                  height: 16,
+                  width: 16,
+                  key: Key('open_eye'),
+                )
+              : SvgPicture.asset(
+                  AppSvgPath.closedEye,
+                  color: AppColors.black,
+                  height: 20,
+                  width: 20,
+                  key: Key('closed_eye'),
+                ),
         ),
       ),
       prefix: Padding(
