@@ -1,16 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+part of 'i_transaction_card_composite.dart';
 
-import '../../../core/theme/app_theme.dart';
-
-class TransactionWidget extends StatelessWidget {
+class GeneralTransactionCard extends ITransactionCardComposite {
   final String title;
   final String subtitle;
   final int value;
   final String iconPath;
 
-  const TransactionWidget({
-    Key key,
+  const GeneralTransactionCard({
     @required this.title,
     @required this.subtitle,
     @required this.value,
@@ -18,11 +14,10 @@ class TransactionWidget extends StatelessWidget {
   })  : assert(title != null),
         assert(subtitle != null),
         assert(value != null),
-        assert(iconPath != null),
-        super(key: key);
+        assert(iconPath != null);
 
   @override
-  Widget build(BuildContext context) {
+  Widget render() {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -35,31 +30,16 @@ class TransactionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          _buildIcon(),
+          renderIcon(),
           const SizedBox(width: 16),
-          Expanded(child: _buildTextsInfo()),
+          Expanded(child: renderDescription()),
         ],
       ),
     );
   }
 
-  Widget _buildIcon() {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.darkGrey,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.all(16),
-      child: SvgPicture.asset(
-        iconPath,
-        color: AppColors.black,
-        height: 16,
-        width: 16,
-      ),
-    );
-  }
-
-  Widget _buildTextsInfo() {
+  @override
+  Widget renderDescription() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -90,17 +70,39 @@ class TransactionWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Text(
-              '\$$value',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: AppTypography.bodySmallSemiBold.copyWith(
-                color: AppColors.black,
-              ),
-            ),
+            renderValue(),
           ],
         ),
       ],
+    );
+  }
+
+  @override
+  Widget renderIcon() {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.darkGrey,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: SvgPicture.asset(
+        iconPath,
+        color: AppColors.black,
+        height: 16,
+        width: 16,
+      ),
+    );
+  }
+
+  @override
+  Widget renderValue() {
+    return Text(
+      '\$$value',
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: AppTypography.bodySmallSemiBold.copyWith(
+        color: AppColors.black,
+      ),
     );
   }
 }
