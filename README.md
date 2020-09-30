@@ -3,7 +3,7 @@
       <img alt="Pedro Henrique" src="https://img.shields.io/badge/-PedroHenrique-8257E5?style=flat&logo=Linkedin&logoColor=white" />
    </a>
   <img alt="License" src="https://img.shields.io/badge/license-MIT-8257E5">
-  <a href="https://github.com/RafaelGoulartB/proffy/stargazers">
+  <a href="https://github.com/pedrohsampaioo/finance_mobile/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/pedrohsampaioo/finance_mobile?color=8257E5&logo=github">
   </a>
 </p>
